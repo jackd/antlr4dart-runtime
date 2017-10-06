@@ -94,7 +94,7 @@ class IntervalSet {
   /// Return minimum element >= 0.
   int get minElement {
     if (isNil) return Token.INVALID_TYPE;
-    int n = _intervals.length;
+    // int n = _intervals.length;
     for (Interval i in  _intervals) {
       int a = i._a;
       int b = i._b;
@@ -362,9 +362,8 @@ class IntervalSet {
   }
 
   List<int> toList() {
-    List<int> values = new List<int>();
-    int n = _intervals.length;
-    for (Interval i in _intervals) {
+    var values = new List<int>();
+    for (var i in _intervals) {
       for (int v = i._a; v <= i._b; v++) {
         values.add(v);
       }
@@ -373,13 +372,13 @@ class IntervalSet {
   }
 
   Set<int> toSet() {
-    Set<int> set = new HashSet<int>();
+    var s = new HashSet<int>();
     for (Interval i in _intervals) {
       for (int v = i._a; v <= i._b; v++) {
-        set.add(v);
+        s.add(v);
       }
     }
-    return set;
+    return s;
   }
 
   void remove(dynamic a) {

@@ -1421,7 +1421,7 @@ class LexerAtnSimulator extends AtnSimulator {
 
   int _matchAtn(StringSource input) {
     AtnState startState = atn.modeToStartState[_mode];
-    int old_mode = _mode;
+    // int old_mode = _mode;
     AtnConfigSet s0_closure = _computeStartState(input, startState);
     bool suppressEdge = s0_closure.hasSemanticContext;
     s0_closure.hasSemanticContext = false;
@@ -1809,7 +1809,7 @@ class LexerAtnSimulator extends AtnSimulator {
   void __addDfaEdge(DfaState pState, int token, DfaState qState) {
     // Only track edges within the DFA bounds
     if (token < MIN_DFA_EDGE || token > MAX_DFA_EDGE) return;
-    Dfa dfa = decisionToDfa[_mode];
+    // Dfa dfa = decisionToDfa[_mode];
     if (pState.edges == null) {
       //  make room for tokens 1..n and -1 masquerading as index 0
       pState.edges = new List<DfaState>(MAX_DFA_EDGE-MIN_DFA_EDGE + 1);
@@ -1880,4 +1880,3 @@ class LexerAtnSimulator extends AtnSimulator {
     _dfaState = null;
   }
 }
-

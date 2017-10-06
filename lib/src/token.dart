@@ -134,7 +134,7 @@ abstract class WritableToken extends Token {
 }
 
 class CommonToken implements WritableToken {
-  static final _EMPTY_SOURCE = new Pair(null, null);
+  static final _EMPTY_SOURCE = new Pair<TokenProvider, StringSource>(null, null);
 
   Pair<TokenProvider, StringSource> _source;
 
@@ -235,4 +235,3 @@ class CommonToken implements WritableToken {
       "'$txt',<$type>$channelStr,$line:$charPositionInLine]";
   }
 }
-

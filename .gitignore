@@ -1,4 +1,28 @@
-test/
-main.dart
+# Files and directories created by pub
+.packages
+.pub/
+build/
+packages
+# Remove the following pattern if you wish to check in your lock file
 pubspec.lock
-packages/
+
+# Files created by dart2js
+*.dart.js
+*.part.js
+*.js.deps
+*.js.map
+*.info.json
+
+# Directory created by dartdoc
+doc/api/
+
+# JetBrains IDEs
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Atom
+.atom
+
+.dart_tool

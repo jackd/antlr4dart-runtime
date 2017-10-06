@@ -41,7 +41,7 @@ class Interval {
     return cache[a];
   }
 
-  bool operator==(Interval o) => _a == o._a && _b == o._b;
+  bool operator==(Object o) => o is Interval && _a == o._a && _b == o._b;
 
   /// Does this start completely before other? Disjoint.
   bool startsBeforeDisjoint(Interval other) => _a < other._a && _b < other._a;

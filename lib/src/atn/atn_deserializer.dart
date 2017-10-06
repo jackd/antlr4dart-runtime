@@ -138,7 +138,8 @@ class AtnDeserializer {
         if (!_isFeatureSupported(_ADDED_LEXER_ACTIONS, uuid)) {
           // this piece of unused metadata was serialized prior to the
           // addition of LexerAction
-          int actionIndexIgnored = codes[p++];
+          // int actionIndexIgnored = codes[p++];
+          p++;
         }
       }
     }
@@ -180,7 +181,7 @@ class AtnDeserializer {
       int arg2 = codes[p++];
       int arg3 = codes[p++];
       var trans = _edgeFactory(atn, ttype, src, trg, arg1, arg2, arg3, sets);
-      AtnState srcState = atn.states[src]..addTransition(trans);
+      atn.states[src].addTransition(trans);
     }
     // edges for rule stop states can be derived, so they aren't serialized
     for (AtnState state in atn.states) {

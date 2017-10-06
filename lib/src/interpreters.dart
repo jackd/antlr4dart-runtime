@@ -16,9 +16,10 @@ class LexerInterpreter extends Lexer {
                    this.ruleNames,
                    this.modeNames,
                    Atn atn,
-                   StringSource input) : super(input),
+                   StringSource input) :
     decisionToDfa = new List<Dfa>(atn.numberOfDecisions),
-    this.atn = atn {
+    this.atn = atn,
+    super(input) {
     if (atn.grammarType != AtnType.LEXER) {
       throw new ArgumentError("The ATN must be a lexer ATN.");
     }
@@ -146,7 +147,7 @@ class ParserInterpreter extends Parser {
       }
       break;
     case Transition.ATOM:
-      match(transition.especialLabel);
+      match((transition as AtomTransition).especialLabel);
       break;
     case Transition.RANGE:
     case Transition.SET:
@@ -167,7 +168,7 @@ class ParserInterpreter extends Parser {
           context, antState.stateNumber, ruleIndex);
       if (ruleStartState.isPrecedenceRule) {
         enterRecursionRule(ctx, ruleStartState.stateNumber,
-            ruleIndex, transition.precedence);
+            ruleIndex, (transition as RuleTransition).precedence);
       } else {
         enterRule(ctx, transition.target.stateNumber, ruleIndex);
       }
@@ -184,9 +185,9 @@ class ParserInterpreter extends Parser {
       action(context, actionTransition.ruleIndex, actionTransition.actionIndex);
       break;
     case Transition.PRECEDENCE:
-      if (!precedencePredicate(context, transition.precedence)) {
+      if (!precedencePredicate(context, (transition as RuleTransition).precedence)) {
         throw new FailedPredicateException(this,
-            "precpred(context, ${transition.precedence})");
+            "precpred(context, ${(transition as RuleTransition).precedence})");
       }
       break;
     default:

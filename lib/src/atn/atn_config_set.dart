@@ -3,7 +3,7 @@ part of antlr4dart;
 /// Specialized [Set]`<`[AtnConfig]`>` that can track info about the set,
 /// with support for combining similar configurations using a
 /// graph-structured stack.
-class AtnConfigSet {
+class AtnConfigSet extends IterableBase<AtnConfig> {
 
   // Indicates that the set of configurations is read-only. Do not allow any
   // code to manipulate the set; DFA states will point at the sets and they
@@ -204,7 +204,3 @@ class AtnConfigSet {
     return hashCode;
   }
 }
-
-
-
-

@@ -125,12 +125,11 @@ class LexerAtnConfig extends AtnConfig {
     return hashCode;
   }
 
-  bool operator==(AtnConfig other) {
-    return other is  LexerAtnConfig
+  bool operator==(Object other) {
+    return other is LexerAtnConfig
         && hasPassedThroughNonGreedyDecision
             == other.hasPassedThroughNonGreedyDecision
         && lexerActionExecutor == other.lexerActionExecutor
         && super == other;
   }
 }
-
