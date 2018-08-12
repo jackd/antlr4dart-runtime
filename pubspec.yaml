@@ -1,5 +1,5 @@
 name: antlr4dart
-version: 0.7.0
+version: 0.8.0
 author: Dominic Jack <thedomjack@gmail.com>
 description: ANTLR4 runtime library for Dart.
 homepage: https://github.com/jackd/antlr4dart-runtime.git
@@ -7,5 +7,4 @@ homepage: https://github.com/jackd/antlr4dart-runtime.git
 environment:
   sdk: '>=2.0.0-dev.68.0 <3.0.0'
 dependencies:
-  bignum: any
   collection: any

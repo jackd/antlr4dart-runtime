@@ -3,7 +3,7 @@ library antlr4dart;
 import 'dart:collection';
 import 'dart:math';
 import 'dart:async';
-import 'package:bignum/bignum.dart';
+// import 'package:bignum/bignum.dart';
 import 'package:collection/collection.dart';
 
 part 'src/contexts.dart';
