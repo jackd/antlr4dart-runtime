@@ -25,13 +25,17 @@ class IntervalSet {
   bool isReadonly = false;
 
   IntervalSet([dynamic els]) {
-    if (els == null) {
-      _intervals = new List<Interval>();
-    } else if (els is List<int>) {
-      _intervals = new List<Interval>();
-      els.forEach((e) => addSingle(e));
-    } else {
-      _intervals = els;
+    _intervals = <Interval>[];
+    if (els != null) {
+      for (var el in els) {
+        if (el is int) {
+          addSingle(el);
+        } else if (el is Interval) {
+          _intervals.add(el);
+        } else {
+          throw TypeError();
+        }
+      }
     }
   }
 

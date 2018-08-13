@@ -5,6 +5,8 @@ import 'dart:math';
 import 'dart:async';
 // import 'package:bignum/bignum.dart';
 import 'package:collection/collection.dart';
+import 'package:meta/meta.dart';
+import 'package:antlr4dart/big_int_util.dart';
 
 part 'src/contexts.dart';
 part 'src/dfa.dart';

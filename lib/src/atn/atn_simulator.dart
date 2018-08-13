@@ -692,7 +692,8 @@ class ParserAtnSimulator extends AtnSimulator {
   }
 
   AtnConfigSet _computeReachSet(AtnConfigSet closure, int t, bool fullCtx) {
-    if (_mergeCache == null) _mergeCache = new DoubleKeyMap();
+    if (_mergeCache == null) _mergeCache = new DoubleKeyMap<
+      PredictionContext, PredictionContext, PredictionContext>();
     AtnConfigSet intermediate = new AtnConfigSet(fullCtx);
 
     // Configurations already in a rule stop state indicate reaching the end
@@ -724,7 +725,8 @@ class ParserAtnSimulator extends AtnSimulator {
         Transition trans = c.state.getTransition(ti);
         AtnState target = _getReachableTarget(trans, t);
         if (target != null) {
-          intermediate.add(new AtnConfig.from(c, state:target), _mergeCache);
+          var next = new AtnConfig.from(c, state:target);
+          intermediate.add(next, _mergeCache);
         }
       }
     }

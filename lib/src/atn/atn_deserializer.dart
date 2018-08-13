@@ -386,8 +386,8 @@ class AtnDeserializer {
   }
 
   static String _toUuid(List<int> data) {
-    BigInteger leastSigBits = _toInt(data);
-    BigInteger mostSigBits = _toInt(data, 4);
+    BigInt leastSigBits = _toInt(data);
+    BigInt mostSigBits = _toInt(data, 4);
     String uuid = "${_digits(mostSigBits >> 32, 8)}-"
                   "${_digits(mostSigBits >> 16, 4)}-"
                   "${_digits(mostSigBits, 4)}-"
@@ -472,16 +472,16 @@ class AtnDeserializer {
     }
   }
 
-  static BigInteger _toInt(List<int> data, [int offset = 0]) {
-    var mask = new BigInteger()..fromString('00000000FFFFFFFF', 16);
-    var lowOrder = new BigInteger(data[offset] | (data[offset + 1] << 16)) & mask;
-    var highOrder = new BigInteger(data[offset + 2] | data[offset + 3] << 16) << 32;
+  static BigInt _toInt(List<int> data, [int offset = 0]) {
+    var mask = BigInt.parse('00000000FFFFFFFF', radix: 16);
+    var lowOrder = BigInt.from(data[offset] | (data[offset + 1] << 16)) & mask;
+    var highOrder = BigInt.from(data[offset + 2] | data[offset + 3] << 16) << 32;
     return lowOrder | highOrder;
   }
 
-  static String _digits(BigInteger paramLong, int paramInt) {
-    var left = new BigInteger(1 << paramInt * 4);
-    String hex = ((left | paramLong & left - BigInteger.ONE)).toString(16);
+  static String _digits(BigInt paramLong, int paramInt) {
+    var left = new BigInt.from(1 << paramInt * 4);
+    String hex = ((left | paramLong & left - BigInt.one)).toRadixString(16);
     return hex.substring(hex.length - paramInt);
   }
 

@@ -378,7 +378,8 @@ class PredictionMode {
   ///
   ///     map[c] U= c.alt // map hash/equals uses s and x, not alt and not pred
   static Iterable<BitSet> getConflictingAltSubsets(AtnConfigSet configs) {
-    var configToAlts = new HashMap(equals:_equals, hashCode:_hashCode);
+    var configToAlts = new HashMap<AtnConfig, BitSet>(
+      equals:_equals, hashCode:_hashCode);
     for (AtnConfig c in configs) {
       BitSet alts = configToAlts[c];
       if (alts == null) {
